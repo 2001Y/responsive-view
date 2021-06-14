@@ -1,0 +1,103 @@
+*,::placeholder,::before,::after {
+    font-size: inherit;
+    font-family: inherit;
+    line-break: strict;
+    color: inherit;
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-right: 0;
+    margin-left: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    padding-right: 0;
+    padding-left: 0;
+    border: 0;
+    box-sizing: border-box;
+    background-repeat: no-repeat;
+    line-break: strict;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+}
+html {
+    overflow: auto;
+}
+ol,ul {
+    list-style-type: none;
+    list-style-position: inside;
+}
+a {
+    color: inherit;
+    text-decoration: none;
+}
+  
+
+/* //www.i-ryo.com/entry/2019/08/24/225050 */
+input,
+button,
+select,
+textarea,summary {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  font: inherit;
+  outline: none;
+  display:block;
+}
+
+textarea {
+  resize: vertical;
+}
+
+input[type='checkbox'],
+input[type='radio'] {
+  display: none;
+}
+
+input[type='submit'],
+input[type='button'],
+label,
+button,
+select,summary {
+  cursor: pointer;
+}
+
+::placeholder {
+    opacity: .5;
+}
+
+select::-ms-expand {
+  display: none;
+}
+
+
+body {
+    font-family: Helvetica, "游ゴシック", "Yu Gothic", YuGothic, system-ui;
+    font-size: 16px;
+    overflow: hidden;
+    position: relative
+}
+body, html {
+    min-height:100vh;
+}
+@supports (-webkit-touch-callout: none) {
+    body, html {
+        min-height:-webkit-fill-available
+    }
+}
+html {
+    line-height: 1.15;
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color:transparent;
+    overflow-x: hidden;
+    overflow-y: visible;
+}
+
+iframe {
+    content-visibility: auto;
+    contain: strict;
+    /* サイズが変化しない場合はcontain: strict;を、
+    サイズが可変の場合にはcontain: content;を該当要素に指定（必要に応じて値は変更） */
+}

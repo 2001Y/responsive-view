@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/reset.css">
+    <link rel="stylesheet" href="/style.css">
+    <title>ResponsiveView</title>
+</head>
+<body>
+    <header>
+        <div class="winSize winW"><span id="winW">1000</span></div>
+        <div class="winSize winH"><span id="winH">1000</span></div>
+        <h1>ResponsiveView</h1>
+        <form target="no" onsubmit="view();">
+            <input type="text" name="URL"  placeholder="url" id="url">
+            <input type="submit" value="VIEW">
+            <iframe name="no" style="width:0;height:0;position:fixed;opacity:0;"></iframe>
+        </form>
+    </header>
+    <main>
+        <details open>
+            <summary>PC x1/2 (1000 x 900)</summary>
+            <div id="pc">
+                <iframe frameborder="0" loading="lazy"></iframe>
+            </div>
+        </details>
+        <details open>
+            <summary>iPhone 12 [Pro] (844 x 390)</summary>
+            <iframe id="ip12" frameborder="0" loading="lazy"></iframe>
+        </details>
+        <details>
+            <summary>iPhone 12 mini (780 x 360)</summary>
+            <iframe id="ip12mini" frameborder="0" loading="lazy"></iframe>
+        </details>
+        <details>
+            <summary>iPhone 12 Pro Max (926 x 428)</summary>
+            <iframe id="ip12promax" frameborder="0" loading="lazy"></iframe>
+        </details>
+        <div></div>
+    </main>
+    <footer>
+        <a href="http://2001y.me" target="_blank" rel="noopener noreferrer">©︎2001Y</a>
+    </footer>
+</body>
+<script>
+    window_load();
+    window.onresize = window_load;
+    function window_load() {
+        winW.innerHTML = window.innerWidth;
+        winH.innerHTML = window.innerHeight;
+    }
+
+    let params = new URL(document.location);
+    if (params.searchParams.get("url")) {
+        url.value = params.searchParams.get("url");
+        view();
+    }
+    function view() {
+        params.searchParams.set("url", url.value);
+        window.history.pushState(null, null, params);
+        document.title = "ResponsiveView｜" + url.value;
+        var elem = document.querySelectorAll('main iframe');
+        for (var i = 0; i < elem.length; i++) {
+            elem[i].src = url.value;
+        }
+    }
+</script>
+</html>
